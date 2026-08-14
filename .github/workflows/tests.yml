@@ -1,0 +1,41 @@
+# 캐스크 문법·스타일 검사.
+#
+# brew tap-new 가 깔아 주는 원본은 포뮬러(소스 빌드 + bottle) 전제라
+# --only-formulae 와 bottle 업로드 단계가 들어 있는데, 이 탭에는 캐스크밖에 없어
+# 그 단계들이 할 일이 없다. 리눅스·인텔 러너도 뺐다 — 캐스크 audit 은 macOS 에서
+# 도는 게 맞고, 배포하는 앱 자체가 Apple Silicon 전용이다.
+name: brew test-bot
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-bot:
+    runs-on: macos-26
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@df4b09108a1de9d6f995fe68f302b3f68bd6d2ef # 2026.07.20.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache Homebrew Bundler RubyGems
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: macos-26-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: macos-26-rubygems-
+
+      - run: brew test-bot --only-cleanup-before
+
+      - run: brew test-bot --only-setup
+
+      - run: brew test-bot --only-tap-syntax
