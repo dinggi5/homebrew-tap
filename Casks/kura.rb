@@ -1,6 +1,6 @@
 cask "kura" do
-  version "0.1.0"
-  sha256 "14e07e1eeac5cde731151b1fec04edc6df47aa3d9ff7ee035a2d5e0ed8ad948d"
+  version "0.1.1"
+  sha256 "29f12459d88cb97e52423258634180905a67a56bb5fd3c7a029601e65658d361"
 
   url "https://github.com/dinggi5/kura/releases/download/v#{version}/Kura_#{version}_aarch64.dmg",
       verified: "github.com/dinggi5/kura/"
