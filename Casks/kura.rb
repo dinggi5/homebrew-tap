@@ -1,6 +1,6 @@
 cask "kura" do
-  version "0.1.1"
-  sha256 "29f12459d88cb97e52423258634180905a67a56bb5fd3c7a029601e65658d361"
+  version "0.1.2"
+  sha256 "6274ba9bf52e334240f8df577b09730f9ee8f1446046dec2e51d810263e0e468"
 
   url "https://github.com/dinggi5/kura/releases/download/v#{version}/Kura_#{version}_aarch64.dmg",
       verified: "github.com/dinggi5/kura/"
@@ -19,6 +19,11 @@ cask "kura" do
   # 설치 단계에서 막히는 편이 낫다.
   depends_on arch: :arm64
   depends_on macos: :big_sur
+
+  # 앱이 스스로 업데이트한다(0.1.2~). 이게 있어야 brew 가 Kura 를 건드리지 않고,
+  # 그래야 위 uninstall launchctl: 이 안 돌아서 자동 시작 설정이 안 지워진다.
+  # 새로 설치하는 사람은 캐스크로 받으므로 version·sha256 은 계속 갱신한다.
+  auto_updates true
 
   app "Kura.app"
 
