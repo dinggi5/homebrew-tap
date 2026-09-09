@@ -2,8 +2,7 @@ cask "kura" do
   version "0.4.0"
   sha256 "b08ad34d2e60334ac708a0e5b58e72b56d2ef7d998d93ef79b6b8327d3cc765f"
 
-  url "https://github.com/dinggi5/kura/releases/download/v#{version}/Kura_#{version}_aarch64.dmg",
-      verified: "github.com/dinggi5/kura/"
+  url "https://github.com/dinggi5/kura/releases/download/v#{version}/Kura_#{version}_aarch64.dmg"
   name "Kura"
   # "local-only" 라고 쓰지 않는다 — 키는 이 맥을 안 떠나지만 잔액 조회·송금은
   # 사용자가 고른 RPC 서버로 나가고, 거래는 공개 체인에 남는다.
