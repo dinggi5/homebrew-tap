@@ -21,7 +21,7 @@ cask "kura" do
   # Apple Silicon 전용 빌드다. Intel 맥에서 조용히 설치돼 안 열리는 것보다
   # 설치 단계에서 막히는 편이 낫다.
   depends_on arch: :arm64
-  depends_on macos: :big_sur
+  depends_on :macos
 
   app "Kura.app"
 
