@@ -1,6 +1,6 @@
 cask "ouro" do
-  version "0.1.0"
-  sha256 "547f058e0fe632eb6b3172e09f650bf30d630a03632fa940f0b7c35466e564a9"
+  version "0.1.1"
+  sha256 "a7e09362492dfe68eec9a0d9c99062fddd5a607afae296c0814a09732b635c25"
 
   url "https://github.com/dinggi5/ouro/releases/download/v#{version}/Ouro_#{version}_aarch64.dmg"
   name "Ouro"
